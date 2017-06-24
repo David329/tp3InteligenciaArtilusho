@@ -75,7 +75,8 @@
                         'algoritmo': valor
                     },
                     success: function(result){
-                        $("#resutlado").text(result);
+                        result = result.replace(/\n/g, "<br />");
+                        $("#resutlado").html(result);
                     }
                 });
              }

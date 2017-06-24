@@ -41,7 +41,7 @@ public class HomeController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HomeController</title>");            
+            out.println("<title>Servlet HomeController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet HomeController at " + request.getContextPath() + "</h1>");
@@ -65,8 +65,8 @@ public class HomeController extends HttpServlet {
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
         String algoritmo = request.getParameter("algoritmo");
-                
-        if(algoritmo.equalsIgnoreCase("1")){
+
+        if (algoritmo.equalsIgnoreCase("1")) {
             String resultado = "";
             try {
                 resultado = Clasificador.AlgoritmoJ48();
@@ -74,12 +74,11 @@ public class HomeController extends HttpServlet {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
 //            out.print(gson.toJson(Double.toString(resultado)));
-            out.println("El kappa es: "+resultado);//cuidado con el salto de linea
+            out.println("El kappa es: " + resultado);//cuidado con el salto de linea
             out.flush();
             out.close();
-        }
-        else if(algoritmo.equalsIgnoreCase("2")){
-            String resultado="";
+        } else if (algoritmo.equalsIgnoreCase("2")) {
+            String resultado = "";
             try {
                 resultado = Clasificador.AlgoritmoRandomForest();
             } catch (Exception ex) {
@@ -87,33 +86,31 @@ public class HomeController extends HttpServlet {
             }
 //            out.print(gson.toJson("El kappa es: " + resultado));
             out.println("El kappa es: "+resultado);//cuidado con el salto de linea
-            out.flush();
+out.flush();
             out.close();
-        }
-        else if(algoritmo.equalsIgnoreCase("3")){
-            String resultado="";
+        } else if (algoritmo.equalsIgnoreCase("3")) {
+            String resultado = "";
             try {
                 resultado = Clasificador.AlgoritmoRandomTree();
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
 //            out.print(gson.toJson("El kappa es: " + Double.toString(resultado)));
-            out.println("El kappa es: "+resultado);//cuidado con el salto de linea
+            out.println("El kappa es: " + resultado);//cuidado con el salto de linea
             out.flush();
             out.close();
-        }
-        else if(algoritmo.equalsIgnoreCase("4")){
-            String resultado="";
+        } else if (algoritmo.equalsIgnoreCase("4")) {
+            String resultado = "";
             try {
                 resultado = Clasificador.mejorAlgoritmo();
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
 //            out.print(gson.toJson("El mejor kappa es: " + Double.toString(resultado)));
-            out.println("El kappa es: "+resultado);//cuidado con el salto de linea
+            out.println("El kappa es: " + resultado);//cuidado con el salto de linea
             out.flush();
             out.close();
-        }        
+        }
     }
 
     /**

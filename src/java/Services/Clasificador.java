@@ -18,6 +18,7 @@ import weka.core.Instance;
 import weka.core.Instances;
 import weka.core.Utils;
 import java.lang.Math;
+import java.util.List;
 
 /**
  *
@@ -56,9 +57,7 @@ public class Clasificador {
         BufferedReader breader;
         breader = new BufferedReader(new FileReader("C:\\Users\\DZZ\\Pictures\\tp2\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
         Instances inst = new Instances(breader);
-
         inst.setClassIndex(inst.numAttributes() - 1); //set the last column as the class attribute 
-
         J48 J4tree = new J48();
         int seed = 1;
         Random rnd = new Random(seed);
@@ -86,14 +85,14 @@ public class Clasificador {
         breader.close();
         kappaJ48 = eval.kappa();
         String resultado = eval.kappa()
-                + eval.toSummaryString("\nResults\n======\n", false)
-                + "training performance results of: "
+                + eval.toSummaryString("<br/>Results<br/>======<br/>", false)
+                + "<br/>training performance results of: <br/>"
                 + J4tree.getClass().getSimpleName()
-                + "\n---------------------------------"
-                + eval.toSummaryString("\nResults", true)
-                + "fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1)
-                + eval.toMatrixString() + eval.toClassDetailsString() + "AUC = " + eval.areaUnderROC(1)
-                + "Training complete, please validate trained model";
+                + "<br/>---------------------------------<br/><br/>"
+                + eval.toSummaryString("<br/>Results", true)
+                + "<br/>fmeasure: " + eval.fMeasure(1) + "<br/> Precision: " + eval.precision(1) + "<br/> Recall: " + eval.recall(1)
+                + "<br/>"+eval.toMatrixString() + "<br/>"+eval.toClassDetailsString() + "<br/>AUC = " + eval.areaUnderROC(1)
+                + "<br/>Training complete, please validate trained model";
 //        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
 //
 //        System.out.println("training performance results of: " + J4tree.getClass().getSimpleName()
@@ -139,14 +138,14 @@ public class Clasificador {
         breader.close();
         kappaRandomForest = eval.kappa();
         String resultado = eval.kappa()
-                + eval.toSummaryString("\nResults\n======\n", false)
-                + "training performance results of: "
+                + eval.toSummaryString("<br/>Results<br/>======<br/>", false)
+                + "<br/>training performance results of: <br/>"
                 + randomForest.getClass().getSimpleName()
-                + "\n---------------------------------"
-                + eval.toSummaryString("\nResults", true)
-                + "fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1)
-                + eval.toMatrixString() + eval.toClassDetailsString() + "AUC = " + eval.areaUnderROC(1)
-                + "Training complete, please validate trained model";
+                + "<br/>---------------------------------<br/><br/>"
+                + eval.toSummaryString("<br/>Results", true)
+                + "<br/>fmeasure: " + eval.fMeasure(1) + "<br/> Precision: " + eval.precision(1) + "<br/> Recall: " + eval.recall(1)
+                + "<br/>"+eval.toMatrixString() + "<br/>"+eval.toClassDetailsString() + "<br/>AUC = " + eval.areaUnderROC(1)
+                + "<br/>Training complete, please validate trained model";
 //        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
 //        System.out.println("training performance results of: " + randomForest.getClass().getSimpleName()+ "\n---------------------------------");
 //        System.out.println(eval.toSummaryString("\nResults", true));
@@ -188,14 +187,14 @@ public class Clasificador {
         breader.close();
         kappaRandomTree = eval.kappa();
         String resultado = eval.kappa()
-                + eval.toSummaryString("\nResults\n======\n", false)
-                + "training performance results of: "
+                + eval.toSummaryString("<br/>Results<br/>======<br/>", false)
+                + "<br/>training performance results of: <br/>"
                 + randomTree.getClass().getSimpleName()
-                + "\n---------------------------------"
-                + eval.toSummaryString("\nResults", true)
-                + "fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1)
-                + eval.toMatrixString() + eval.toClassDetailsString() + "AUC = " + eval.areaUnderROC(1)
-                + "Training complete, please validate trained model";
+                + "<br/>---------------------------------<br/><br/>"
+                + eval.toSummaryString("<br/>Results", true)
+                + "<br/>fmeasure: " + eval.fMeasure(1) + "<br/> Precision: " + eval.precision(1) + "<br/> Recall: " + eval.recall(1)
+                + "<br/>"+eval.toMatrixString() + "<br/>"+eval.toClassDetailsString() + "<br/>AUC = " + eval.areaUnderROC(1)
+                + "<br/>Training complete, please validate trained model";
 //        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
 //
 //        System.out.println("training performance results of: " + randomForest.getClass().getSimpleName()+ "\n---------------------------------");
