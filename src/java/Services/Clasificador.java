@@ -52,7 +52,7 @@ public class Clasificador {
     public static double AlgoritmoJ48()throws FileNotFoundException, IOException, Exception{
         double percent = 50.0;
         BufferedReader breader;
-        breader = new BufferedReader(new FileReader("C:\\Users\\win7\\Documents\\NetBeansProjects\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
+        breader = new BufferedReader(new FileReader("C:\\Users\\DZZ\\Pictures\\tp2\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
         Instances inst = new Instances(breader);
 
         inst.setClassIndex(inst.numAttributes() - 1); //set the last column as the class attribute 
@@ -100,7 +100,7 @@ public class Clasificador {
     public static double AlgoritmoRandomForest()throws FileNotFoundException, IOException, Exception{
         double percent = 50.0;
         BufferedReader breader;
-        breader = new BufferedReader(new FileReader("C:\\Users\\win7\\Documents\\NetBeansProjects\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
+        breader = new BufferedReader(new FileReader("C:\\Users\\DZZ\\Pictures\\tp2\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
         Instances inst = new Instances(breader);
 
         inst.setClassIndex(inst.numAttributes() - 1); //set the last column as the class attribute 
@@ -143,7 +143,7 @@ public class Clasificador {
     public static double AlgoritmoRandomTree()throws FileNotFoundException, IOException, Exception{
         double percent = 50.0;
         BufferedReader breader;
-        breader = new BufferedReader(new FileReader("C:\\Users\\win7\\Documents\\NetBeansProjects\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
+        breader = new BufferedReader(new FileReader("C:\\Users\\DZZ\\Pictures\\tp2\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
         Instances inst = new Instances(breader);
 
         inst.setClassIndex(inst.numAttributes() - 1); //set the last column as the class attribute 

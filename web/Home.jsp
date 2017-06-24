@@ -75,22 +75,11 @@
                         'algoritmo': valor
                     },
                     success: function(result){
-                        console.log(result);
-                        
-                        if(result != 0){
-                            $("#resutlado").text("Valor de Kappa: " + result)
-                        }
-                        else{
-                            $("#resutlado").text("");
-                        }
+                        $("#resutlado").text(result);
                     }
                 });
              }
             
         </script>
-        
-       
     </body>
-    
-    
 </html>

@@ -62,8 +62,6 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
         String algoritmo = request.getParameter("algoritmo");
@@ -86,7 +84,7 @@ public class HomeController extends HttpServlet {
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            out.print(gson.toJson(Double.toString(resultado)));
+            out.print(gson.toJson("El kappa es: " + Double.toString(resultado)));
             out.flush();
             out.close();
         }
@@ -97,7 +95,7 @@ public class HomeController extends HttpServlet {
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            out.print(gson.toJson(Double.toString(resultado)));
+            out.print(gson.toJson("El kappa es: " + Double.toString(resultado)));
             out.flush();
             out.close();
         }
@@ -108,11 +106,10 @@ public class HomeController extends HttpServlet {
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            out.print(gson.toJson(Double.toString(resultado)));
+            out.print(gson.toJson("El mejor kappa es: " + Double.toString(resultado)));
             out.flush();
             out.close();
-        }
-        
+        }        
     }
 
     /**
