@@ -67,46 +67,50 @@ public class HomeController extends HttpServlet {
         String algoritmo = request.getParameter("algoritmo");
                 
         if(algoritmo.equalsIgnoreCase("1")){
-            double resultado = 0.0;
+            String resultado = "";
             try {
                 resultado = Clasificador.AlgoritmoJ48();
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            out.print(gson.toJson(Double.toString(resultado)));
+//            out.print(gson.toJson(Double.toString(resultado)));
+            out.println("El kappa es: "+resultado);//cuidado con el salto de linea
             out.flush();
             out.close();
         }
         else if(algoritmo.equalsIgnoreCase("2")){
-            double resultado = 0.0;
+            String resultado="";
             try {
                 resultado = Clasificador.AlgoritmoRandomForest();
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            out.print(gson.toJson("El kappa es: " + Double.toString(resultado)));
+//            out.print(gson.toJson("El kappa es: " + resultado));
+            out.println("El kappa es: "+resultado);//cuidado con el salto de linea
             out.flush();
             out.close();
         }
         else if(algoritmo.equalsIgnoreCase("3")){
-            double resultado = 0.0;
+            String resultado="";
             try {
                 resultado = Clasificador.AlgoritmoRandomTree();
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            out.print(gson.toJson("El kappa es: " + Double.toString(resultado)));
+//            out.print(gson.toJson("El kappa es: " + Double.toString(resultado)));
+            out.println("El kappa es: "+resultado);//cuidado con el salto de linea
             out.flush();
             out.close();
         }
         else if(algoritmo.equalsIgnoreCase("4")){
-            double resultado = 0.0;
+            String resultado="";
             try {
                 resultado = Clasificador.mejorAlgoritmo();
             } catch (Exception ex) {
                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            out.print(gson.toJson("El mejor kappa es: " + Double.toString(resultado)));
+//            out.print(gson.toJson("El mejor kappa es: " + Double.toString(resultado)));
+            out.println("El kappa es: "+resultado);//cuidado con el salto de linea
             out.flush();
             out.close();
         }        

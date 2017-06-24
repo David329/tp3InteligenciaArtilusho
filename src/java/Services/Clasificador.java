@@ -24,9 +24,12 @@ import java.lang.Math;
  * @author win7
  */
 public class Clasificador {
-    
-    static String J48ModelPath = "C:\\Users\\win7\\Documents\\NetBeansProjects\\IAMLTB3\\src\\java\\Services\\donlusho.model";
-    
+
+    public static double kappaJ48;
+    public static double kappaRandomForest;
+    public static double kappaRandomTree;
+    public static String kappaMejorAlgoritmo;
+
 //    public static void main(String[] args) throws Exception  {
 //        int opcion=1;
 //        double kappaJ48;
@@ -48,8 +51,7 @@ public class Clasificador {
 //        
 //// weka.core.SerializationHelper.write(J48ModelPath,J4tree);
 //    }
-    
-    public static double AlgoritmoJ48()throws FileNotFoundException, IOException, Exception{
+    public static String AlgoritmoJ48() throws FileNotFoundException, IOException, Exception {
         double percent = 50.0;
         BufferedReader breader;
         breader = new BufferedReader(new FileReader("C:\\Users\\DZZ\\Pictures\\tp2\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
@@ -82,22 +84,32 @@ public class Clasificador {
         eval.evaluateModel(J4tree, test);
 
         breader.close();
-
-        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
-
-        System.out.println("training performance results of: " + J4tree.getClass().getSimpleName()
-                + "\n---------------------------------");
-        System.out.println(eval.toSummaryString("\nResults", true));
-        System.out.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
-        System.out.println(eval.toMatrixString());
-        System.out.println(eval.toClassDetailsString());
-        System.out.println("AUC = " + eval.areaUnderROC(1));
-        System.out.println("Training complete, please validate trained model");
-
-        return eval.kappa();
+        kappaJ48 = eval.kappa();
+        String resultado = eval.kappa()
+                + eval.toSummaryString("\nResults\n======\n", false)
+                + "training performance results of: "
+                + J4tree.getClass().getSimpleName()
+                + "\n---------------------------------"
+                + eval.toSummaryString("\nResults", true)
+                + "fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1)
+                + eval.toMatrixString() + eval.toClassDetailsString() + "AUC = " + eval.areaUnderROC(1)
+                + "Training complete, please validate trained model";
+//        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
+//
+//        System.out.println("training performance results of: " + J4tree.getClass().getSimpleName()
+//                + "\n---------------------------------");
+//        System.out.println(eval.toSummaryString("\nResults", true));
+//        System.out.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
+//        System.out.println(eval.toMatrixString());
+//        System.out.println(eval.toClassDetailsString());
+//        System.out.println("AUC = " + eval.areaUnderROC(1));
+//        System.out.println("Training complete, please validate trained model");
+//
+//        return eval.kappa();
+        return resultado;
     }
-    
-    public static double AlgoritmoRandomForest()throws FileNotFoundException, IOException, Exception{
+
+    public static String AlgoritmoRandomForest() throws FileNotFoundException, IOException, Exception {
         double percent = 50.0;
         BufferedReader breader;
         breader = new BufferedReader(new FileReader("C:\\Users\\DZZ\\Pictures\\tp2\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
@@ -125,22 +137,28 @@ public class Clasificador {
         eval.evaluateModel(randomForest, test);
 
         breader.close();
-
-        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
-
-        System.out.println("training performance results of: " + randomForest.getClass().getSimpleName()
-                + "\n---------------------------------");
-        System.out.println(eval.toSummaryString("\nResults", true));
-        System.out.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
-        System.out.println(eval.toMatrixString());
-        System.out.println(eval.toClassDetailsString());
-        System.out.println("AUC = " + eval.areaUnderROC(1));
-        System.out.println("Training complete, please validate trained model");
-
-        return eval.kappa();
+        kappaRandomForest = eval.kappa();
+        String resultado = eval.kappa()
+                + eval.toSummaryString("\nResults\n======\n", false)
+                + "training performance results of: "
+                + randomForest.getClass().getSimpleName()
+                + "\n---------------------------------"
+                + eval.toSummaryString("\nResults", true)
+                + "fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1)
+                + eval.toMatrixString() + eval.toClassDetailsString() + "AUC = " + eval.areaUnderROC(1)
+                + "Training complete, please validate trained model";
+//        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
+//        System.out.println("training performance results of: " + randomForest.getClass().getSimpleName()+ "\n---------------------------------");
+//        System.out.println(eval.toSummaryString("\nResults", true));
+//        System.out.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
+//        System.out.println(eval.toMatrixString());
+//        System.out.println(eval.toClassDetailsString());
+//        System.out.println("AUC = " + eval.areaUnderROC(1));
+//        System.out.println("Training complete, please validate trained model");
+        return resultado;
     }
-    
-    public static double AlgoritmoRandomTree()throws FileNotFoundException, IOException, Exception{
+
+    public static String AlgoritmoRandomTree() throws FileNotFoundException, IOException, Exception {
         double percent = 50.0;
         BufferedReader breader;
         breader = new BufferedReader(new FileReader("C:\\Users\\DZZ\\Pictures\\tp2\\IAMLTB3\\src\\java\\Services\\haberman.arff"));
@@ -148,7 +166,7 @@ public class Clasificador {
 
         inst.setClassIndex(inst.numAttributes() - 1); //set the last column as the class attribute 
 
-        RandomTree randomForest = new RandomTree();
+        RandomTree randomTree = new RandomTree();
         int seed = 1;
         Random rnd = new Random(seed);
         inst.randomize(rnd);
@@ -162,39 +180,51 @@ public class Clasificador {
         Instances train = new Instances(inst, 0, trainSize);
         Instances test = new Instances(inst, trainSize, testSize);
 
-        randomForest.buildClassifier(train);
+        randomTree.buildClassifier(train);
 
         Evaluation eval = new Evaluation(train);
-        eval.evaluateModel(randomForest, test);
+        eval.evaluateModel(randomTree, test);
 
         breader.close();
-
-        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
-
-        System.out.println("training performance results of: " + randomForest.getClass().getSimpleName()+ "\n---------------------------------");
-        System.out.println(eval.toSummaryString("\nResults", true));
-        System.out.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
-        System.out.println(eval.toMatrixString());
-        System.out.println(eval.toClassDetailsString());
-        System.out.println("AUC = " + eval.areaUnderROC(1));
-        System.out.println("Training complete, please validate trained model");
-
-        return eval.kappa();
+        kappaRandomTree = eval.kappa();
+        String resultado = eval.kappa()
+                + eval.toSummaryString("\nResults\n======\n", false)
+                + "training performance results of: "
+                + randomTree.getClass().getSimpleName()
+                + "\n---------------------------------"
+                + eval.toSummaryString("\nResults", true)
+                + "fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1)
+                + eval.toMatrixString() + eval.toClassDetailsString() + "AUC = " + eval.areaUnderROC(1)
+                + "Training complete, please validate trained model";
+//        System.out.println(eval.toSummaryString("\nResults\n======\n", false));
+//
+//        System.out.println("training performance results of: " + randomForest.getClass().getSimpleName()+ "\n---------------------------------");
+//        System.out.println(eval.toSummaryString("\nResults", true));
+//        System.out.println("fmeasure: " + eval.fMeasure(1) + " Precision: " + eval.precision(1) + " Recall: " + eval.recall(1));
+//        System.out.println(eval.toMatrixString());
+//        System.out.println(eval.toClassDetailsString());
+//        System.out.println("AUC = " + eval.areaUnderROC(1));
+//        System.out.println("Training complete, please validate trained model");
+        return resultado;
     }
-    
-    public static double mejorAlgoritmo() throws Exception{
-        
-        double kappaJ48;
-        double kappaRandomForest;
-        double kappaRandomTree;
-        double kappaMejorAlgoritmo;
-        
-        kappaJ48=Clasificador.AlgoritmoJ48();
-        kappaRandomForest=Clasificador.AlgoritmoRandomForest();
-        kappaRandomTree=Clasificador.AlgoritmoRandomTree();
-        kappaMejorAlgoritmo=Math.max(kappaJ48, Math.max(kappaRandomForest, kappaRandomTree));
-        
+
+    public static String mejorAlgoritmo() throws Exception {
+        String rkappaJ48, rkappaRandomForest, rkappaRandomTree;
+        double mejorAlgo;
+
+        rkappaJ48 = Clasificador.AlgoritmoJ48();
+        rkappaRandomForest = Clasificador.AlgoritmoRandomForest();
+        rkappaRandomTree = Clasificador.AlgoritmoRandomTree();
+
+        mejorAlgo = Math.max(kappaJ48, Math.max(kappaRandomForest, kappaRandomTree));
+        if (mejorAlgo == kappaJ48) {
+            kappaMejorAlgoritmo = rkappaJ48;
+        } else if (mejorAlgo == kappaRandomForest) {
+            kappaMejorAlgoritmo = rkappaRandomForest;
+        } else if (mejorAlgo == kappaRandomTree) {
+            kappaMejorAlgoritmo = rkappaRandomTree;
+        }
+
         return kappaMejorAlgoritmo;
     }
-    
 }
